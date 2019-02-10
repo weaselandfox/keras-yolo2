@@ -1,3 +1,12 @@
 #! /usr/bin/env bash
 
-nvidia-docker run -it  -v "$PWD":/src -v "$PWD/data":/data -w /src tensorflow/tensorflow:nightly-gpu-py3
+CONTAINER="krsyl2"
+
+if [ ! "$(docker ps -q -f name="$CONTAINER")" ]; then
+    if [ "$(docker ps -aq -f status=exited -f name="$CONTAINER")" ]; then
+        docker rm "$CONTAINER"
+    fi
+    nvidia-docker run -it -d --name "$CONTAINER" -v "$PWD":/src -v "$PWD/data":/data -w /src tensorflow/tensorflow:nightly-gpu-py3
+fi
+
+nvidia-docker exec -it "$CONTAINER" bash
