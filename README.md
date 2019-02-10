@@ -123,6 +123,9 @@ These weights can be used as the pretrained weights for any one class object det
 Symlink a `data` folder containing training data\
 `$ ln -s /home/you/path/to/data-folder data`
 
+Dowload the full_yolo_backend.h5 model from releases and copy it into this folder\
+  `$ curl -L https://github.com/weaselandfox/keras-yolo2/releases/download/v0.2.0/full_yolo_backend.h5 --ouput yolo_backend.h5`
+
 Run the bash script that starts a nvidia-docker container running the tensorflow/tensorflow:nightly-gpu-py3 image\
 `$ bin/run`
 
