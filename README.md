@@ -119,19 +119,29 @@ https://1drv.ms/f/s!ApLdDEW3ut5feoZAEUwmSMYdPlY
 
 These weights can be used as the pretrained weights for any one class object detectors.
 
-### 3. Generate anchors for your dataset (optional)
+### 3. Docker setup
+Symlink a `data` folder containing training data\
+`$ ln -s /home/you/path/to/data-folder data`
+
+Run the bash script that starts a nvidia-docker container running the tensorflow/tensorflow:nightly-gpu-py3 image\
+`$ bin/run`
+
+Inside the container install the dependencies\
+`# pip install -r requirements`
+
+### 4. Generate anchors for your dataset (optional)
 
 `python gen_anchors.py -c config.json`
 
 Copy the generated anchors printed on the terminal to the ```anchors``` setting in ```config.json```.
 
-### 4. Start the training process
+### 5. Start the training process
 
 `python train.py -c config.json`
 
 By the end of this process, the code will write the weights of the best model to file best_weights.h5 (or whatever name specified in the setting "saved_weights_name" in the config.json file). The training process stops when the loss on the validation set is not improved in 3 consecutive epoches.
 
-### 5. Perform detection using trained weights on an image by running
+### 6. Perform detection using trained weights on an image by running
 `python predict.py -c config.json -w /path/to/best_weights.h5 -i /path/to/image/or/video`
 
 It carries out detection on the image and write the image with detected bounding boxes to the same folder.
