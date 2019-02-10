@@ -132,6 +132,15 @@ Run the bash script that starts a nvidia-docker container running the tensorflow
 Inside the container install the dependencies\
 `# pip install -r requirements`
 
+When you want to exit the container you can just run\
+`# exit`
+
+And continue where yout left off with\
+`$ bin/run`
+
+The `clean` script can be used to stop and remove the docker container\
+`$ bin/clean`
+
 ### 4. Generate anchors for your dataset (optional)
 
 `python gen_anchors.py -c config.json`
