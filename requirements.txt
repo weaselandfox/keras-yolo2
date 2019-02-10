@@ -1,5 +1,4 @@
-tensorflow-gpu==1.3
 keras==2.0.8
 imgaug
-opencv-python
+opencv-python-headless
 h5py
